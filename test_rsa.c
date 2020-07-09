@@ -39,3 +39,16 @@ void test_rsa()
 	//printf("1000 times tests  used %f seconds in total.\n", (double)difftime(finish, start) / CLOCKS_PER_SEC);
 	//printf("The algorithm runs once used %f seconds on average.\n", (double)difftime(finish, start) / CLOCKS_PER_SEC / 1000);
 }
+
+
+void test_fdh()
+{
+	char* text = "No gains without pains!";//待加密、签名的消息
+	big p, q, n, d, e, c, s;   //(n,d)私钥  (n,e)公钥  c密文  s签名
+	miracl* mip = mirsys(36, 0);
+	c = mirvar(0);
+	s = mirvar(0);
+	creat_key(&p, &q, &n, &d, &e);            //密钥生成
+	s = sign_crt_fdh(text, d, p, q);		  //RSA-FDH签名
+	check_fdh(text, s, e, p, q);//RSA-FDH验证
+}
