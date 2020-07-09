@@ -67,22 +67,20 @@ void test_ecdsa()  //直接进行参数传递的方式
 	clock_t start, finish;
 	start = clock();
 
-	for (int i = 0; i < 1000; i++) {
 
 	ECDSA_creat_key(para, &e, &ep, &d);
-	}
 
-	//sign(para, message,d, &r, &s);
-	//verify(para, message, ep, e, r, s);
+	sign(para, message,d, &r, &s);
+	verify(para, message, ep, e, r, s);
 
-	printf("Test of this algorithm finished\n");
+	/*printf("Test of this algorithm finished\n");
 	finish = clock();
 
 	printf("Start at  %f s\n", (double)start / CLOCKS_PER_SEC);
 	printf("End at %f s\n", (double)finish / CLOCKS_PER_SEC);
 
 	printf("1000 times tests  used %f seconds in total.\n", (double)difftime(finish, start) / CLOCKS_PER_SEC);
-	printf("The algorithm runs once used %f seconds on average.\n", (double)difftime(finish, start) / CLOCKS_PER_SEC / 1000);
+	printf("The algorithm runs once used %f seconds on average.\n", (double)difftime(finish, start) / CLOCKS_PER_SEC / 1000);*/
 
 	
 
